@@ -27,6 +27,7 @@ let operators = document.querySelectorAll(".op")
 let equals = document.querySelector("#equals")
 let currentNum;
 let currentOp;
+let lastItemIsOperation = false;
 let calculations = []
 let result;
 
@@ -45,6 +46,8 @@ for (let num of numbers){
     
     num.addEventListener("click", () => {
         
+
+        lastItemIsOperation = false;
         display.textContent += num.id;
     
         if (currentNum == undefined){
@@ -63,7 +66,7 @@ for (let op of operators){
     op.addEventListener("click", () => {
 
         if (currentNum !== undefined){
-                calculations.push(currentNum);
+                calculations.push(parseInt(currentNum));
         }
             
         /*if there is no current number & there is an operator already selected, this means
@@ -75,6 +78,13 @@ for (let op of operators){
         if (currentNum == undefined && currentOp !== undefined){
             currentOp = op.id;
             calculations.splice(calculations.length - 1);
+
+            /*since chosing an operator has wiped the current number from memory
+            and added it to the array, change the lastItemIsOperation value to true, 
+            so that we can splice out the stray operator at the end of the array and
+            do the rest of the calculation if another number isn't clicked before 
+            hitting the equals button*/
+            lastItemIsOperation = true;
         }
 
         //wipe current number and display
@@ -99,14 +109,29 @@ calculations array in the order they've been submitted and return a result*/
 /*-------------------------------------------------------------------------------------*/
 
 
-/* When the equals button has been clicked, make sure a number has been selected prior.
-If so, push the current number to the array, and then use the reduce function on the 
-array which contains logic to complete the operations in the order entered*/
+/* When the equals button has been clicked, push the current number to the array, and then 
+use the reduce function on the  array which contains logic to complete the operations in the
+ order entered*/
 equals.addEventListener("click", () => {
 
-    if (currentNum !== undefined){
+    if (currentNum !== undefined || lastItemIsOperation == true){
 
-        calculations.push(parseInt(currentNum));
+        //if theres a current number, push it to the array before calculating
+        if (currentNum !== undefined){
+            calculations.push(parseInt(currentNum));
+        }
+
+        //if the last thing clicked was an operator, remove it, reset the boolean
+        if (lastItemIsOperation == true){
+            calculations.splice(calculations.length -1);
+            lastItemIsOperation = false;
+        }
+
+        //if the array is empty, end the function here
+        if (calculations.length == 0){
+            return;
+        }
+
         result = calculations.reduce((previousValue, currentValue) => {
 
             /*if the previous array item -or the first item when we start iterating 
