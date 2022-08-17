@@ -4,16 +4,16 @@ calculation and returns the results */
 let operate = (x,y,operator) => {
     switch(operator){
 
-        case "add":
+        case "+":
             return x + y
 
-        case "sub":
+        case "-":
             return x - y
 
-        case "mult":
+        case "x":
             return x * y
 
-        case "div":
+        case "÷":
             return x/y
 
     }
@@ -55,7 +55,12 @@ for (let num of numbers){
         by pressing a number, reset the number to whatever one we just pressed*/
         if (currentNum == undefined || equalsRanLast){
             currentNum = num.id;
+
+            if (equalsRanLast){
+            display.textContent = currentNum;
             equalsRanLast = false;
+            }
+            
         } else {
             currentNum += num.id;
         }
@@ -67,8 +72,10 @@ for (let num of numbers){
 calculations array, followed by the operator chosen*/
 for (let op of operators){
 
+    
     op.addEventListener("click", () => {
-
+        equalsRanLast = false;
+        lastItemIsOperation = true;
         display.textContent += ` ${op.id} `;
 
         if (currentNum !== undefined){
@@ -96,7 +103,7 @@ for (let op of operators){
             so that we can splice out the stray operator at the end of the array and
             do the rest of the calculation if another number isn't clicked before 
             hitting the equals button*/
-            lastItemIsOperation = true;
+            
         }
 
         //push the operator to calculations
@@ -126,7 +133,7 @@ use the reduce function on the  array which contains logic to complete the opera
  order entered*/
 equals.addEventListener("click", () => {
 
-    if (currentNum !== undefined || lastItemIsOperation == true){
+    
 
         //if theres a current number, push it to the array before calculating
         if (currentNum !== undefined){
@@ -172,6 +179,6 @@ equals.addEventListener("click", () => {
         /*set equalsRanLast so that if we click a number after, the current number is reset
         to whatever is clicked, instead of concatonated to it*/
         equalsRanLast = true;      
-    }
+    
 
 })
