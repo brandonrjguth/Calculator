@@ -25,6 +25,7 @@ let display = document.querySelector("#calcDisplay")
 let numbers = document.querySelectorAll(".num");
 let operators = document.querySelectorAll(".op")
 let equals = document.querySelector("#equals")
+let clear = document.querySelector("#clear");
 let currentNum;
 let currentOp;
 let lastItemIsOperation = false;
@@ -180,5 +181,13 @@ equals.addEventListener("click", () => {
         to whatever is clicked, instead of concatonated to it*/
         equalsRanLast = true;      
     
+})
 
+clear.addEventListener("click", () => {
+    display.textContent = ""
+    currentNum = undefined;
+    currentOp = undefined;
+    calculations = [];
+    equalsRanLast = false;
+    lastItemIsOperation = false;
 })
