@@ -30,7 +30,7 @@ let currentOp;
 let lastItemIsOperation = false;
 let calculations = []
 let result;
-
+let equalsRanLast = false;
 
 
 /*-------------------------------------------------------------------------------------*/
@@ -50,8 +50,11 @@ for (let num of numbers){
         lastItemIsOperation = false;
         display.textContent += num.id;
     
-        if (currentNum == undefined){
+        /*if this is the first number entered, or we've just finished an equation, followed 
+        by pressing a number, reset the number to whatever one we just pressed*/
+        if (currentNum == undefined || equalsRanLast){
             currentNum = num.id;
+            equalsRanLast = false;
         } else {
             currentNum += num.id;
         }
@@ -155,7 +158,11 @@ equals.addEventListener("click", () => {
         //log result and empty variables
         console.log(`result is ${result}`)
         calculations = [];
-        currentNum = result;        
+        currentNum = result;  
+
+        /*set equalsRanLast so that if we click a number after, the current number is reset
+        to whatever is clicked, instead of concatonated to it*/
+        equalsRanLast = true;      
     }
 
 })
