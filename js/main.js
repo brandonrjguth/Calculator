@@ -30,6 +30,7 @@ let currentOp;
 let lastItemIsOperation = false;
 let calculations = []
 let result;
+let displayArray;
 let equalsRanLast = false;
 
 
@@ -68,6 +69,8 @@ for (let op of operators){
 
     op.addEventListener("click", () => {
 
+        display.textContent += ` ${op.id} `;
+
         if (currentNum !== undefined){
                 calculations.push(parseInt(currentNum));
         }
@@ -81,6 +84,12 @@ for (let op of operators){
         if (currentNum == undefined && currentOp !== undefined){
             currentOp = op.id;
             calculations.splice(calculations.length - 1);
+            
+            //split display text into array, remove the last operator, replace with the new
+            displayArray = display.textContent.split(" ");
+            displayArray.splice(displayArray.length - 4, 2);
+            displayString = displayArray.join(" ");
+            display.textContent = displayString;
 
             /*since chosing an operator has wiped the current number from memory
             and added it to the array, change the lastItemIsOperation value to true, 
@@ -90,14 +99,14 @@ for (let op of operators){
             lastItemIsOperation = true;
         }
 
-        //wipe current number and display
-        currentNum = undefined;
-        display.textContent = ""
-
         //push the operator to calculations
         currentOp = op.id;
         calculations.push(currentOp);
         
+
+        //wipe current number and display
+        currentNum = undefined;
+       
     })
 }
 
@@ -155,10 +164,10 @@ equals.addEventListener("click", () => {
             
         })
         
-        //log result and empty variables
-        console.log(`result is ${result}`)
+        //display result and empty variables
         calculations = [];
         currentNum = result;  
+        display.textContent = result;
 
         /*set equalsRanLast so that if we click a number after, the current number is reset
         to whatever is clicked, instead of concatonated to it*/
