@@ -107,14 +107,14 @@ equals.addEventListener("click", () => {
     if (currentNum !== undefined){
 
         calculations.push(parseInt(currentNum));
-        result = calculations.reduce((previousVal, currentValue) => {
+        result = calculations.reduce((previousValue, currentValue) => {
 
             /*if the previous array item -or the first item when we start iterating 
             through- is a number, and the following is not, store the previous array item
             as the first number and return the current array item which will be the operation*/
-            if (!isNaN(previous) && isNaN(current)){
-                firstNum = prev;
-                return cur;
+            if (!isNaN(previousValue) && isNaN(currentValue)){
+                firstNum = previousValue;
+                return currentValue;
             }
 
             /*since we returned the current array item, which was the operator chosen, on 
@@ -123,7 +123,7 @@ equals.addEventListener("click", () => {
             the first and current number, and the previous array item, which is the
             operator inbetween them, then return the result. This result becomes our new 
             first number, or if we are at the end ofthe array, becomes our final result*/
-            return operate(firstNum, cur, prev); 
+            return operate(firstNum, currentValue, previousValue); 
             
         })
         
