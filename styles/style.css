@@ -1,0 +1,41 @@
+html, body, .container{
+    height:100%;
+}
+
+.row{
+    display:flex;
+    flex-direction: row;
+}
+
+.col{
+    display: flex;
+    flex-direction: column;
+}
+
+.header{
+    height:100px;
+    background-color: black;
+    color:white;
+    justify-content: center;
+    align-items: center;
+}
+
+.main{
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+    background-color: cadetblue;
+}
+
+.calc{
+    justify-content: center;
+    align-items: center;
+}
+
+.footer{
+    background-color: black;
+    color: white;
+    height:50px;
+    justify-content: center;
+    align-items: center;
+}
