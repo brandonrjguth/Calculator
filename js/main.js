@@ -63,10 +63,14 @@ for (let num of numbers){
             }
             
         } else {
-            currentNum += num.id;
+                
+                
+                    currentNum += num.id;
+                
         }
     })
 }
+
 
 
 /*When any operator is clicked, see if theres been a number clicked prior, and add it to the 
@@ -80,7 +84,7 @@ for (let op of operators){
         display.textContent += ` ${op.id} `;
 
         if (currentNum !== undefined){
-                calculations.push(parseInt(currentNum));
+                calculations.push(parseFloat(currentNum));
         }
             
         /*if there is no current number & there is an operator already selected, this means
@@ -138,7 +142,7 @@ equals.addEventListener("click", () => {
 
         //if theres a current number, push it to the array before calculating
         if (currentNum !== undefined){
-            calculations.push(parseInt(currentNum));
+            calculations.push(parseFloat(currentNum));
         }
 
         //if the last thing clicked was an operator, remove it, reset the boolean
