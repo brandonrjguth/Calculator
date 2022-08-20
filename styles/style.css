@@ -1,5 +1,6 @@
 html, body, .container{
     height:100%;
+    margin: 0;
 }
 
 .row{
@@ -13,7 +14,6 @@ html, body, .container{
 }
 
 .header{
-    height:100px;
     background-color: black;
     color:white;
     justify-content: center;
@@ -35,7 +35,10 @@ html, body, .container{
 .footer{
     background-color: black;
     color: white;
-    height:50px;
     justify-content: center;
     align-items: center;
+}
+
+.footer p {
+    font-size:1rem;
 }
