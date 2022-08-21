@@ -183,6 +183,10 @@ clear.addEventListener("click", () => {
 })
 
 
+
+
+
+
 for (button of buttons){
     button.addEventListener("mousedown", function(){
         this.style.boxShadow = "0 0 0 0";
