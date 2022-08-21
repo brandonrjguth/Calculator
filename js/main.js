@@ -170,6 +170,8 @@ equals.addEventListener("click", () => {
     
 })
 
+
+//Clear button logic for clearing all values and the display.
 clear.addEventListener("click", () => {
     display.textContent = ""
     currentNum = undefined;
