@@ -23,13 +23,14 @@ let operate = (x,y,operator) => {
 /*Variables for dom nodes and logic applied in later functions*/
 let display = document.querySelector("#calcDisplay")
 let numbers = document.querySelectorAll(".num");
-let operators = document.querySelectorAll(".op")
-let equals = document.querySelector("#equals")
+let operators = document.querySelectorAll(".op");
+let equals = document.querySelector("#equals");
 let clear = document.querySelector("#clear");
+let buttons = document.querySelectorAll("button");
 let currentNum;
 let currentOp;
 let lastItemIsOperation = false;
-let calculations = []
+let calculations = [];
 let result;
 let displayArray;
 let equalsRanLast = false;
@@ -173,10 +174,22 @@ equals.addEventListener("click", () => {
 
 //Clear button logic for clearing all values and the display.
 clear.addEventListener("click", () => {
-    display.textContent = ""
+    display.textContent = "";
     currentNum = undefined;
     currentOp = undefined;
     calculations = [];
     equalsRanLast = false;
     lastItemIsOperation = false;
 })
+
+
+for (button of buttons){
+    button.addEventListener("mousedown", function(){
+        this.style.boxShadow = "0 0 0 0";
+        console.log(this);
+    })
+
+    button.addEventListener("mouseup", function(){
+        this.style.boxShadow = "2px 2px 1px 1px black";
+    })
+}
