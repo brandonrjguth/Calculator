@@ -33,7 +33,7 @@ html, body, .container{
 .main{
     justify-content: center;
     align-items: center;
-    gap:8rem;
+    gap:calc(1rem + 6vw);
     flex-grow: 1;
     padding:2rem;
     background-color: rgb(241 241 241);
