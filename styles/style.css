@@ -135,8 +135,12 @@ button{
     background-color: #ffffff;  
 }
 
-button:hover{
-    background-color: #dde4fd;
+
+/*if the device has non-emulated hover, change key colour on hover*/
+@media (hover: hover) {
+    button:hover{
+        background-color: #dde4fd;
+    }
 }
 
 
