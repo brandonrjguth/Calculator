@@ -63,10 +63,7 @@ for (let num of numbers){
             }
             
         } else {
-                
-                
-                    currentNum += num.id;
-                
+            currentNum += num.id;
         }
     })
 }
@@ -102,29 +99,16 @@ for (let op of operators){
             displayArray.splice(displayArray.length - 4, 2);
             displayString = displayArray.join(" ");
             display.textContent = displayString;
-
-            /*since chosing an operator has wiped the current number from memory
-            and added it to the array, change the lastItemIsOperation value to true, 
-            so that we can splice out the stray operator at the end of the array and
-            do the rest of the calculation if another number isn't clicked before 
-            hitting the equals button*/
-            
         }
 
         //push the operator to calculations
         currentOp = op.id;
         calculations.push(currentOp);
         
-
         //wipe current number and display
         currentNum = undefined;
-       
     })
 }
-
-
-
-
 
 
 /*-------------------------------------------------------------------------------------*/
@@ -134,12 +118,11 @@ calculations array in the order they've been submitted and return a result*/
 
 
 /* When the equals button has been clicked, push the current number to the array, and then 
-use the reduce function on the  array which contains logic to complete the operations in the
+use the reduce function on the array which contains logic to complete the operations in the
  order entered*/
 equals.addEventListener("click", () => {
 
     
-
         //if theres a current number, push it to the array before calculating
         if (currentNum !== undefined){
             calculations.push(parseFloat(currentNum));
