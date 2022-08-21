@@ -196,4 +196,13 @@ for (button of buttons){
     button.addEventListener("mouseup", function(){
         this.style.boxShadow = "2px 2px 1px 1px black";
     })
+
+    button.addEventListener("touchstart", function(){
+        this.style.boxShadow = "0 0 0 0";
+        console.log(this);
+    })
+
+    button.addEventListener("touchend", function(){
+        this.style.boxShadow = "2px 2px 1px 1px black";
+    })
 }
