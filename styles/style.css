@@ -102,7 +102,7 @@ html, body, .container{
     width: 17.2rem;
     padding: 0.3rem 1rem 0 0;
     text-align: end;
-    font-size: 1.7rem;
+    font-size: 1.5rem;
     border-radius: 5px;
     background-color:rgb(118 118 118);
     color: white;
@@ -143,12 +143,12 @@ button{
     }
 }
 
-
 .description h2{
     font-size: calc(2rem + 3.5vw);
     margin:0;
     padding:1rem 0;
 }
+
 .description p {
     background-color: #3048f5;
     padding: 2rem;
@@ -158,3 +158,9 @@ button{
     font-size: 1.3rem;
     font-style: italic;
 }
+
+@media only screen and (max-width: 330px) {
+    #calcDisplay{
+        font-size: 1rem;
+    }
+  }

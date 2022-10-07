@@ -28,6 +28,7 @@ let equals = document.querySelector("#equals");
 let clear = document.querySelector("#clear");
 let buttons = document.querySelectorAll("button");
 let currentNum;
+let currentDisplay;
 let currentOp;
 let lastItemIsOperation = false;
 let calculations = [];
@@ -50,8 +51,13 @@ for (let num of numbers){
     num.addEventListener("click", () => {
         
 
+        //Wipe the display text for a new number after using an operator
+        if (lastItemIsOperation){
+            display.textContent = "";
+        }
+
         lastItemIsOperation = false;
-        display.textContent += num.id;
+        
     
         /*if this is the first number entered, or we've just finished an equation, followed 
         by pressing a number, reset the number to whatever one we just pressed*/
@@ -64,8 +70,15 @@ for (let num of numbers){
             }
             
         } else {
+
+            //if the current number is more than 10 digits long, don't allow a larger number, just return
+            if (currentNum.toString().length >= 10){
+                return
+            }
             currentNum += num.id;
         }
+
+    display.textContent += num.id;
     })
 }
 
@@ -162,8 +175,15 @@ equals.addEventListener("click", () => {
         
         //display result and empty variables
         calculations = [];
-        currentNum = result;  
-        display.textContent = result;
+        currentDisplay = result.toString();
+
+        //if the result number is over 10 digits long, convert the number to be displayed to scientific notation. Actual full value is still stored.
+        if (currentDisplay.length > 10){
+            currentDisplay = currentDisplay.slice(0,10) + `e${currentDisplay.length - 10}`;
+        }
+        currentNum = result; 
+
+        display.textContent = currentDisplay;
 
         /*set equalsRanLast so that if we click a number after, the current number is reset
         to whatever is clicked, instead of concatonated to it*/
