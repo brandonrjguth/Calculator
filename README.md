@@ -3,7 +3,7 @@
 A calculator web application built with HTML, CSS (Flexbox), and JavaScript.
 
 ## Description
-FlexCalc is a sleek, responsive calculator web application. Built using HTML, CSS with Flexbox for layout, and JavaScript for functionality, this project demonstrates proficiency in front-end web development and complex arithmetic operations.
+This calculator isbuilt using HTML, CSS with Flexbox for layout, and JavaScript for functionality, this project demonstrates proficiency in front-end web development and complex arithmetic operations.
 
 ## Features
 - Responsive design using Flexbox
